@@ -1,0 +1,20 @@
+/*
+Theme Name: 榮恩堂 Rong-En
+Theme URI: https://celc.org.tw/
+Author: 中華福音道路德會 榮恩堂
+Author URI: https://celc.org.tw/
+Description: 為「中華福音道路德會 榮恩堂」（台南白河）設計的禮儀式路德宗教會主題。莊重的襯線排版、聖道與聖禮為中心的版面結構，內建講道、主日週報、教會活動三種自訂內容類型。
+Version: 1.0.0
+Requires at least: 6.2
+Tested up to: 6.8
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: rongen
+Tags: church, custom-logo, custom-menu, featured-images, translation-ready, block-styles, wide-blocks
+*/
+
+/*
+ * 本檔案僅供 WordPress 讀取主題資訊之用。
+ * 實際樣式請見 assets/css/theme.css（由 inc/enqueue.php 載入）。
+ */

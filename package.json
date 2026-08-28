@@ -1,0 +1,16 @@
+{
+  "name": "rongen-lutheran-church-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "中華福音道路德會 榮恩堂 WordPress 主題與本機預覽工具",
+  "type": "module",
+  "scripts": {
+    "preview": "node tools/preview/server.mjs",
+    "export": "node tools/export-static.mjs",
+    "build:theme": "node tools/package-theme.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "GPL-2.0-or-later"
+}
