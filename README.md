@@ -1,6 +1,7 @@
 # 中華福音道路德會 榮恩堂 — WordPress 網站
 
-> **GitHub:** [pixellayer7-jpg/rongen-church](https://github.com/pixellayer7-jpg/rongen-church)
+> **GitHub:** [pixellayer7-jpg/rongen-church](https://github.com/pixellayer7-jpg/rongen-church)  
+> **English preview:** run `npm run preview` → open <http://localhost:4321/en/> (中 / EN switcher in the header)
 
 為台南白河「中華福音道路德會 榮恩堂」製作的自訂 WordPress 佈景主題，
 以及一套不需要 PHP 環境就能檢視版面的本機預覽工具。
@@ -8,6 +9,28 @@
 設計風格參考 [Redeemer Lutheran Church, Fort Wayne](https://redeemer-fortwayne.org/worship/)
 的禮儀教會質感：深墨底色、古金強調色、襯線標題、大量留白，
 避免商業網站式的高飽和色塊與動畫。
+
+### 語言說明
+
+| 層級 | 語言 |
+| --- | --- |
+| **正式 WordPress 主題**（給堂會上線） | 繁體中文 |
+| **本機／靜態預覽** | 繁中為主，另提供 **`/en/` 英文版** 供作品集與英語讀者瀏覽 |
+
+英文預覽涵蓋首頁、關於、崇拜、信仰、聯絡等核心頁，並含精簡示範講道／週報／消息；完整堂會內容以繁中為準。
+
+---
+
+## English (portfolio summary)
+
+**Rongen Lutheran Church** — custom WordPress theme + zero-PHP local preview for China Evangelical Lutheran Church · Rongen (Baihe, Tainan).
+
+- **Theme:** custom post types (sermons / bulletins / events), Customizer church fields, shortcodes, liturgical visual language
+- **Preview:** `npm run preview` → [http://localhost:4321](http://localhost:4321) (中文) · [http://localhost:4321/en/](http://localhost:4321/en/) (English)
+- **Export:** `npm run export` builds a static zip (includes `/en/` pages) for pastors to review offline
+- **Package:** `npm run build:theme` → `dist/rongen.zip` for WordPress upload
+
+Production copy for the parish remains Traditional Chinese; the English routes are a bilingual portfolio demo with a 中 / EN header switcher.
 
 ---
 
@@ -50,8 +73,12 @@ rongen-church/
 │   └── assets/                   CSS、JS、SVG
 ├── tools/
 │   ├── preview/                  本機預覽伺服器（Node，零相依）
+│   │   ├── content.mjs           繁中預覽文案
+│   │   ├── content-en.mjs        英文預覽文案（作品集）
+│   │   ├── render.mjs / render-en.mjs
+│   │   └── server.mjs
 │   ├── lib/zip.mjs               標準 ZIP 產生器（跨平台可解壓）
-│   ├── export-static.mjs         匯出靜態網站，供他人離線預覽
+│   ├── export-static.mjs         匯出靜態網站（含 /en/）
 │   ├── verify-export.mjs         檢查匯出成品的連結與資源是否完整
 │   ├── package-theme.mjs         打包成可上傳的 zip
 │   └── smoke-test.mjs            對已架好的 WordPress 逐頁檢查錯誤
@@ -66,7 +93,8 @@ rongen-church/
 npm run preview
 ```
 
-開啟 <http://localhost:4321>。
+開啟 <http://localhost:4321>（繁中）或 <http://localhost:4321/en/>（English）。
+頁首有 **中文 · EN** 切換。
 
 預覽伺服器直接讀取主題的 `assets/css/theme.css` 與 `assets/js/main.js`，
 HTML 結構也刻意與 PHP 樣板保持一致，所以看到的版面就是網站上線後的樣子。

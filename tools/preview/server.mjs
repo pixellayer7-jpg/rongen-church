@@ -2,8 +2,8 @@
  * 榮恩堂主題的本機預覽伺服器。
  *
  * 本機沒有 PHP／WordPress 環境時，用這支伺服器檢視主題的實際版面。
- * 靜態資源直接由 wp-content/themes/rongen/assets 提供，
- * 因此看到的樣式與 WordPress 上線後完全相同。
+ * 靜態資源直接由 wp-content/themes/rongen/assets 提供。
+ * 另提供 /en/ 英文預覽（作品集雙語展示；正式堂會站仍以繁中為主）。
  *
  * 用法：npm run preview
  */
@@ -14,6 +14,12 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { sermons, bulletins, events, news } from './content.mjs';
+import {
+	sermons as sermonsEn,
+	bulletins as bulletinsEn,
+	events as eventsEn,
+	news as newsEn,
+} from './content-en.mjs';
 import {
 	renderHome,
 	renderWorship,
@@ -32,6 +38,24 @@ import {
 	renderPost,
 	render404,
 } from './render.mjs';
+import {
+	renderHomeEn,
+	renderWorshipEn,
+	renderBeliefsEn,
+	renderAboutEn,
+	renderContactEn,
+	renderGivingEn,
+	renderCelcEn,
+	renderNewsArchiveEn,
+	renderSermonArchiveEn,
+	renderSermonEn,
+	renderBulletinArchiveEn,
+	renderBulletinEn,
+	renderEventArchiveEn,
+	renderEventEn,
+	renderPostEn,
+	render404En,
+} from './render-en.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const THEME_DIR = path.resolve(__dirname, '../../wp-content/themes/rongen');
@@ -61,6 +85,17 @@ const staticRoutes = {
 	'/sermons/': renderSermonArchive,
 	'/bulletins/': renderBulletinArchive,
 	'/events/': renderEventArchive,
+	'/en/': renderHomeEn,
+	'/en/about/': renderAboutEn,
+	'/en/worship/': renderWorshipEn,
+	'/en/beliefs/': renderBeliefsEn,
+	'/en/news/': renderNewsArchiveEn,
+	'/en/giving/': renderGivingEn,
+	'/en/celc/': renderCelcEn,
+	'/en/contact/': renderContactEn,
+	'/en/sermons/': renderSermonArchiveEn,
+	'/en/bulletins/': renderBulletinArchiveEn,
+	'/en/events/': renderEventArchiveEn,
 };
 
 const collections = [
@@ -68,14 +103,16 @@ const collections = [
 	{ prefix: '/bulletins/', items: bulletins, render: renderBulletin },
 	{ prefix: '/events/', items: events, render: renderEvent },
 	{ prefix: '/news/', items: news, render: renderPost },
+	{ prefix: '/en/sermons/', items: sermonsEn, render: renderSermonEn },
+	{ prefix: '/en/bulletins/', items: bulletinsEn, render: renderBulletinEn },
+	{ prefix: '/en/events/', items: eventsEn, render: renderEventEn },
+	{ prefix: '/en/news/', items: newsEn, render: renderPostEn },
 ];
 
 function serveAsset(res, urlPath) {
-	// /assets/... 直接對應主題目錄下的 assets/...
 	const relative = decodeURIComponent(urlPath.replace(/^\/assets\//, ''));
 	const filePath = path.join(THEME_DIR, 'assets', relative);
 
-	// 防止路徑跳脫主題目錄。
 	if (!filePath.startsWith(path.join(THEME_DIR, 'assets'))) {
 		res.writeHead(403).end('Forbidden');
 		return;
@@ -107,7 +144,6 @@ const server = http.createServer((req, res) => {
 		return;
 	}
 
-	// 統一補上結尾斜線，讓 /worship 與 /worship/ 都能運作。
 	if (!urlPath.endsWith('/')) {
 		res.writeHead(301, { Location: `${urlPath}/` }).end();
 		return;
@@ -129,13 +165,19 @@ const server = http.createServer((req, res) => {
 		}
 	}
 
-	html(res, render404(), 404);
+	html(res, urlPath.startsWith('/en/') ? render404En() : render404(), 404);
 });
 
 server.listen(PORT, () => {
-	const pages = ['/', ...Object.keys(staticRoutes).filter((p) => p !== '/')];
-	console.log(`\n榮恩堂主題預覽已啟動： http://localhost:${PORT}\n`);
-	console.log('可瀏覽的頁面：');
-	pages.forEach((p) => console.log(`  http://localhost:${PORT}${p}`));
+	console.log(`\n榮恩堂主題預覽已啟動： http://localhost:${PORT}`);
+	console.log(`English preview:          http://localhost:${PORT}/en/\n`);
+	console.log('中文頁面：');
+	['/', '/about/', '/worship/', '/beliefs/', '/contact/'].forEach((p) =>
+		console.log(`  http://localhost:${PORT}${p}`)
+	);
+	console.log('\nEnglish pages:');
+	['/en/', '/en/about/', '/en/worship/', '/en/beliefs/', '/en/contact/'].forEach((p) =>
+		console.log(`  http://localhost:${PORT}${p}`)
+	);
 	console.log('\n按 Ctrl+C 結束。\n');
 });

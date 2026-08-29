@@ -39,6 +39,20 @@ export function formatDate(iso, withWeekday = true) {
 	return withWeekday ? `${text}（${WEEKDAYS[d.getDay()]}）` : text;
 }
 
+function enTwin(zhUrl) {
+	if (!zhUrl || zhUrl === '/') return '/en/';
+	return `/en${zhUrl.startsWith('/') ? zhUrl : `/${zhUrl}`}`;
+}
+
+function langSwitcher(currentUrl) {
+	const en = enTwin(currentUrl);
+	return `<p class="lang-switch" role="navigation" aria-label="語言 / Language">
+		<span class="lang-switch__current">中文</span>
+		<span aria-hidden="true">·</span>
+		<a href="${esc(en)}">EN</a>
+	</p>`;
+}
+
 const CROSS = '<svg class="cross-mark" viewBox="0 0 24 36" aria-hidden="true" focusable="false"><path d="M10.6 0h2.8v9.4H24v2.8H13.4V36h-2.8V12.2H0V9.4h10.6z"/></svg>';
 
 const tel = (value) => value.replace(/[^0-9+]/g, '');
@@ -73,6 +87,7 @@ function header(currentUrl) {
 				<a href="tel:${esc(tel(church.phone))}">${esc(church.phone)}</a>
 				<a href="${esc(church.facebook)}" target="_blank" rel="noopener">Facebook</a>
 				<a href="${esc(church.celcUrl)}" target="_blank" rel="noopener">總會</a>
+				${langSwitcher(currentUrl)}
 			</p>
 		</div>
 	</div>
@@ -168,6 +183,11 @@ export function layout({ title, body, url = '/' }) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap">
 <link rel="stylesheet" href="/assets/css/theme.css">
+<style>
+.lang-switch{display:inline-flex;gap:.35rem;align-items:center;margin:0;font-size:.85rem}
+.lang-switch a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.lang-switch__current{opacity:.85;font-weight:600}
+</style>
 </head>
 <body class="${url === '/' ? 'is-front ' : ''}no-sidebar">
 ${header(url)}

@@ -18,6 +18,12 @@ import { fileURLToPath } from 'node:url';
 import { buildZip, walk } from './lib/zip.mjs';
 import { sermons, bulletins, events, news } from './preview/content.mjs';
 import {
+	sermons as sermonsEn,
+	bulletins as bulletinsEn,
+	events as eventsEn,
+	news as newsEn,
+} from './preview/content-en.mjs';
+import {
 	renderHome,
 	renderWorship,
 	renderBeliefs,
@@ -35,6 +41,24 @@ import {
 	renderPost,
 	render404,
 } from './preview/render.mjs';
+import {
+	renderHomeEn,
+	renderWorshipEn,
+	renderBeliefsEn,
+	renderAboutEn,
+	renderContactEn,
+	renderGivingEn,
+	renderCelcEn,
+	renderNewsArchiveEn,
+	renderSermonArchiveEn,
+	renderSermonEn,
+	renderBulletinArchiveEn,
+	renderBulletinEn,
+	renderEventArchiveEn,
+	renderEventEn,
+	renderPostEn,
+	render404En,
+} from './preview/render-en.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -42,7 +66,7 @@ const THEME_ASSETS = path.join(ROOT, 'wp-content/themes/rongen/assets');
 const OUT_DIR = path.join(ROOT, 'dist/preview-site');
 const OUT_ZIP = path.join(ROOT, 'dist/榮恩堂網站預覽.zip');
 
-/** 所有頁面：route 為原本的網址路徑，html 為產生的內容。 */
+/** 所有頁面：route 為原本的網址路徑，html 為產生的內容。含 /en/ 英文預覽。 */
 function collectPages() {
 	const pages = [
 		['/', renderHome],
@@ -56,6 +80,17 @@ function collectPages() {
 		['/sermons/', renderSermonArchive],
 		['/bulletins/', renderBulletinArchive],
 		['/events/', renderEventArchive],
+		['/en/', renderHomeEn],
+		['/en/about/', renderAboutEn],
+		['/en/worship/', renderWorshipEn],
+		['/en/beliefs/', renderBeliefsEn],
+		['/en/news/', renderNewsArchiveEn],
+		['/en/giving/', renderGivingEn],
+		['/en/celc/', renderCelcEn],
+		['/en/contact/', renderContactEn],
+		['/en/sermons/', renderSermonArchiveEn],
+		['/en/bulletins/', renderBulletinArchiveEn],
+		['/en/events/', renderEventArchiveEn],
 	].map(([route, render]) => ({ route, html: render() }));
 
 	const collections = [
@@ -63,6 +98,10 @@ function collectPages() {
 		{ prefix: '/bulletins/', items: bulletins, render: renderBulletin },
 		{ prefix: '/events/', items: events, render: renderEvent },
 		{ prefix: '/news/', items: news, render: renderPost },
+		{ prefix: '/en/sermons/', items: sermonsEn, render: renderSermonEn },
+		{ prefix: '/en/bulletins/', items: bulletinsEn, render: renderBulletinEn },
+		{ prefix: '/en/events/', items: eventsEn, render: renderEventEn },
+		{ prefix: '/en/news/', items: newsEn, render: renderPostEn },
 	];
 
 	for (const { prefix, items, render } of collections) {
@@ -125,6 +164,8 @@ for (const { route, html } of pages) {
 
 // 404 頁放在根目錄，靜態空間可設為錯誤頁。
 fs.writeFileSync(path.join(OUT_DIR, '404.html'), toRelative(render404(), 0), 'utf8');
+fs.mkdirSync(path.join(OUT_DIR, 'en'), { recursive: true });
+fs.writeFileSync(path.join(OUT_DIR, 'en', '404.html'), toRelative(render404En(), 1), 'utf8');
 
 copyDir(THEME_ASSETS, path.join(OUT_DIR, 'assets'));
 
