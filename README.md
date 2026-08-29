@@ -1,5 +1,7 @@
 # 中華福音道路德會 榮恩堂 — WordPress 網站
 
+> **GitHub:** [pixellayer7-jpg/rongen-church](https://github.com/pixellayer7-jpg/rongen-church)
+
 為台南白河「中華福音道路德會 榮恩堂」製作的自訂 WordPress 佈景主題，
 以及一套不需要 PHP 環境就能檢視版面的本機預覽工具。
 
