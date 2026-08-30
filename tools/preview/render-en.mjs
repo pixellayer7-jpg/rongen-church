@@ -164,14 +164,27 @@ function footer() {
 }
 
 function layout({ title, body, url = '/en/' }) {
+	const pageTitle = `${title} — ${church.name}`
+	const description =
+		'Portfolio preview of the Rongen Lutheran Church custom WordPress theme — liturgical design, zero-PHP local preview, bilingual GitHub Pages demo (zh/en).'
+	const canonical = `https://pixellayer7-jpg.github.io/rongen-church${url}`
 	return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)} — ${esc(church.name)}</title>
+<title>${esc(pageTitle)}</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="English portfolio preview of the Rongen Lutheran Church WordPress theme.">
+<meta name="description" content="${esc(description)}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${esc(pageTitle)}">
+<meta property="og:description" content="${esc(description)}">
+<meta property="og:url" content="${esc(canonical)}">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="${esc(pageTitle)}">
+<meta name="twitter:description" content="${esc(description)}">
+<link rel="canonical" href="${esc(canonical)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap">

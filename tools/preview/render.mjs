@@ -171,14 +171,28 @@ function footer() {
 }
 
 export function layout({ title, body, url = '/' }) {
+	const pageTitle = `${title} — ${church.name}`
+	const description =
+		'榮恩堂自訂 WordPress 主題作品集預覽（繁中）。禮儀教會風格、本機預覽工具與 GitHub Pages 雙語演示。正式堂會站內容以繁中為準。'
+	const canonical = `https://pixellayer7-jpg.github.io/rongen-church${url === '/' ? '/' : url}`
 	return `<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)} — ${esc(church.name)}</title>
+<title>${esc(pageTitle)}</title>
+<meta name="description" content="${esc(description)}">
 <!-- 這是尚未上線的設計稿預覽，不應被搜尋引擎收錄。正式主題不含此標記。 -->
 <meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${esc(pageTitle)}">
+<meta property="og:description" content="${esc(description)}">
+<meta property="og:url" content="${esc(canonical)}">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="${esc(pageTitle)}">
+<meta name="twitter:description" content="${esc(description)}">
+<link rel="canonical" href="${esc(canonical)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap">

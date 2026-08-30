@@ -1,5 +1,8 @@
 # 中華福音道路德會 榮恩堂 — WordPress 網站
 
+[![CI](https://github.com/pixellayer7-jpg/rongen-church/actions/workflows/ci.yml/badge.svg)](https://github.com/pixellayer7-jpg/rongen-church/actions/workflows/ci.yml)
+[![Pages](https://github.com/pixellayer7-jpg/rongen-church/actions/workflows/pages.yml/badge.svg)](https://github.com/pixellayer7-jpg/rongen-church/actions/workflows/pages.yml)
+
 > **GitHub:** [pixellayer7-jpg/rongen-church](https://github.com/pixellayer7-jpg/rongen-church)  
 > **Live preview:** [中文](https://pixellayer7-jpg.github.io/rongen-church/) · [English](https://pixellayer7-jpg.github.io/rongen-church/en/)  
 > **Local:** `npm run preview` → <http://localhost:4321/> · <http://localhost:4321/en/>（页首 中 / EN）
