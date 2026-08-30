@@ -671,5 +671,5 @@ export function renderPostEn(item) {
 export function render404En() {
 	const body = `${pageHero({ title: 'Page not found', text: 'This English preview route does not exist.' })}
 <section class="section"><div class="wrap" style="text-align:center"><a class="btn" href="/en/">Back to English home</a></div></section>`;
-	return layout({ title: '404', body, url: '/en/404/' });
+	return layout({ title: '404', body, url: '/en/' });
 }

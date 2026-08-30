@@ -882,5 +882,5 @@ export function render404() {
 	</div>
 </div>`;
 
-	return layout({ title: '找不到這個頁面', body, url: '/404/' });
+	return layout({ title: '找不到這個頁面', body, url: '/' });
 }

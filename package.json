@@ -1,16 +1,19 @@
 {
 	"name": "rongen-lutheran-church-site",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"private": true,
 	"description": "Rongen Lutheran Church - WordPress theme + bilingual (zh/en) local preview tools",
 	"type": "module",
 	"scripts": {
 		"preview": "node tools/preview/server.mjs",
 		"export": "node tools/export-static.mjs",
-		"build:theme": "node tools/package-theme.mjs"
+		"build:theme": "node tools/package-theme.mjs",
+		"check": "node tools/smoke-preview-i18n.mjs && npm run export && node tools/verify-export.mjs",
+		"verify": "node tools/verify-export.mjs"
 	},
 	"engines": {
 		"node": ">=18"
 	},
-	"license": "GPL-2.0-or-later"
+	"license": "GPL-2.0-or-later",
+	"homepage": "https://pixellayer7-jpg.github.io/rongen-church/"
 }
