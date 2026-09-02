@@ -169,6 +169,15 @@ fs.writeFileSync(path.join(OUT_DIR, 'en', '404.html'), toRelative(render404En(),
 
 copyDir(THEME_ASSETS, path.join(OUT_DIR, 'assets'));
 
+const OG_ASSETS = ['og-image.png', 'og-image.svg'];
+for (const name of OG_ASSETS) {
+	const src = path.join(__dirname, 'preview', name);
+	if (!fs.existsSync(src)) {
+		throw new Error(`Missing ${name} — run npm run og:image first`);
+	}
+	fs.copyFileSync(src, path.join(OUT_DIR, name));
+}
+
 // 收件者多半不熟悉技術，附一份最簡單的開啟說明。
 const readme = `榮恩堂網站設計稿預覽
 =====================

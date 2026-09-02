@@ -19,6 +19,7 @@ import {
 	ui,
 } from './content-en.mjs';
 import { esc } from './render.mjs';
+import { OG_IMAGE, OG_IMAGE_ALT } from './og-meta.mjs';
 
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const CROSS =
@@ -181,9 +182,15 @@ function layout({ title, body, url = '/en/' }) {
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${esc(canonical)}">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="${esc(OG_IMAGE)}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(OG_IMAGE_ALT)}">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(pageTitle)}">
 <meta name="twitter:description" content="${esc(description)}">
+<meta name="twitter:image" content="${esc(OG_IMAGE)}">
+<meta name="twitter:image:alt" content="${esc(OG_IMAGE_ALT)}">
 <link rel="canonical" href="${esc(canonical)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

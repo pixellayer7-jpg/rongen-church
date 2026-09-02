@@ -144,6 +144,22 @@ const server = http.createServer((req, res) => {
 		return;
 	}
 
+	if (urlPath === '/og-image.png' || urlPath === '/og-image.svg') {
+		const filePath = path.join(__dirname, urlPath.slice(1));
+		fs.readFile(filePath, (err, data) => {
+			if (err) {
+				res.writeHead(404).end('Not found');
+				return;
+			}
+			res.writeHead(200, {
+				'Content-Type': MIME[path.extname(filePath).toLowerCase()] || 'application/octet-stream',
+				'Cache-Control': 'no-cache',
+			});
+			res.end(data);
+		});
+		return;
+	}
+
 	if (!urlPath.endsWith('/')) {
 		res.writeHead(301, { Location: `${urlPath}/` }).end();
 		return;

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Rongen Lutheran Church preview">
+  <rect width="1200" height="630" fill="#faf7f1"/>
+  <rect width="1200" height="6" fill="#a8813f"/>
+  <rect x="0" y="624" width="1200" height="6" fill="#12161d"/>
+  <g transform="translate(88,118)">
+    <path fill="#12161d" d="M46 0h12v38H88v12H58v88H46V50H16V38h30z"/>
+  </g>
+  <text x="160" y="168" fill="#12161d" font-family="Georgia, serif" font-size="58" font-weight="600">Rongen Lutheran Church</text>
+  <text x="160" y="228" fill="#59616b" font-family="Georgia, serif" font-size="34" font-style="italic">Taiwan CELC parish website</text>
+  <text x="160" y="300" fill="#24292f" font-family="Segoe UI, sans-serif" font-size="30">Custom WordPress theme - liturgical design</text>
+  <text x="160" y="360" fill="#a8813f" font-family="Segoe UI, sans-serif" font-size="26">Bilingual preview (zh / EN) - GitHub Pages demo</text>
+  <text x="160" y="520" fill="#8b929b" font-family="Segoe UI, sans-serif" font-size="22">pixellayer7-jpg.github.io/rongen-church</text>
+</svg>
