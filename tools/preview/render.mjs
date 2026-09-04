@@ -208,10 +208,12 @@ export function layout({ title, body, url = '/' }) {
 .lang-switch{display:inline-flex;gap:.35rem;align-items:center;margin:0;font-size:.85rem}
 .lang-switch a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .lang-switch__current{opacity:.85;font-weight:600}
+.print-hint{margin:0;padding:.55rem 1rem;background:#f2ece1;border-bottom:1px solid rgba(18,22,29,.12);font-size:.88rem;text-align:center;color:#59616b}
 </style>
 </head>
 <body class="${url === '/' ? 'is-front ' : ''}no-sidebar">
 ${header(url)}
+<p class="print-hint no-print">列印審閱：按 <kbd>Ctrl</kbd>+<kbd>P</kbd>（Mac：⌘P）。選單、地圖與影片不會出現在列印稿；聯絡資訊會保留。</p>
 ${body}
 ${footer()}`;
 }

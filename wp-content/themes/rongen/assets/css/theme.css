@@ -1371,16 +1371,130 @@ audio { width: 100%; margin-bottom: 2rem; }
 }
 
 /* --------------------------------------------------------------------------
-   18. 列印（週報與講道稿常被列印）
+   18. 列印（給牧師／同工審閱版面：週報、講道稿、消息頁）
    -------------------------------------------------------------------------- */
 @media print {
-	.site-header,
-	.site-footer,
-	.pagination,
+	.skip-link,
+	.nav-toggle,
+	.nav-primary,
+	.header-top,
+	.lang-switch,
 	.map-frame,
-	.video-frame { display: none !important; }
+	.map-fallback,
+	.footer-visit__map,
+	.video-frame,
+	.pagination,
+	.btn-row,
+	.no-print {
+		display: none !important;
+	}
 
-	body { background: #fff; color: #000; font-size: 12pt; }
-	.section { padding-block: 0; }
-	a { text-decoration: none; color: #000; }
+	.print-only {
+		display: block !important;
+	}
+
+	body {
+		background: #fff !important;
+		color: #000 !important;
+		font-size: 11pt;
+		line-height: 1.55;
+		-webkit-print-color-adjust: economy;
+		print-color-adjust: economy;
+	}
+
+	a {
+		color: #000 !important;
+		text-decoration: none !important;
+	}
+
+	a[href^="http"]::after,
+	a[href^="mailto:"]::after,
+	a[href^="tel:"]::after {
+		content: " (" attr(href) ")";
+		font-size: 0.85em;
+		color: #444;
+		word-break: break-all;
+	}
+
+	/* 站內錨點／相對路徑不展開 URL */
+	a[href^="#"]::after,
+	a[href^="/"]::after,
+	a[href^="../"]::after,
+	a[href^="./"]::after {
+		content: none !important;
+	}
+
+	.site-header {
+		position: static !important;
+		box-shadow: none !important;
+		border-bottom: 1pt solid #333;
+		padding-block: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.header-main {
+		padding-block: 0.35rem;
+	}
+
+	.brand__sub {
+		display: block;
+	}
+
+	.site-footer {
+		border-top: 1pt solid #333;
+		margin-top: 1.5rem;
+		padding-top: 0.75rem;
+		font-size: 9pt;
+	}
+
+	.footer-visit {
+		display: none !important;
+	}
+
+	.footer-main {
+		display: block !important;
+	}
+
+	.footer-col ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.section {
+		padding-block: 0.75rem !important;
+		page-break-inside: avoid;
+	}
+
+	.hero,
+	.page-hero,
+	.card,
+	.sermon-meta,
+	.info-list {
+		page-break-inside: avoid;
+	}
+
+	h1, h2, h3 {
+		page-break-after: avoid;
+		color: #000 !important;
+	}
+
+	.card {
+		box-shadow: none !important;
+		border: 1pt solid #ccc !important;
+		break-inside: avoid;
+	}
+
+	iframe {
+		display: none !important;
+	}
+
+	img {
+		max-width: 100% !important;
+		page-break-inside: avoid;
+	}
 }
+
+.print-only {
+	display: none;
+}
+

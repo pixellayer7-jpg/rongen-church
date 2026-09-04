@@ -5,7 +5,8 @@
 
 > **GitHub:** [pixellayer7-jpg/rongen-church](https://github.com/pixellayer7-jpg/rongen-church)  
 > **Live preview:** [中文](https://pixellayer7-jpg.github.io/rongen-church/) · [English](https://pixellayer7-jpg.github.io/rongen-church/en/)  
-> **Local:** `npm run preview` → <http://localhost:4321/> · <http://localhost:4321/en/>（页首 中 / EN）
+> **Local:** `npm run preview` → <http://localhost:4321/> · <http://localhost:4321/en/>（页首 中 / EN）  
+> **Print:** 預覽頁支援列印審閱（Ctrl/⌘+P）— 隱藏選單／地圖／影片，保留教會名稱與聯絡資訊。
 
 為台南白河「中華福音道路德會 榮恩堂」製作的自訂 WordPress 佈景主題，
 以及一套不需要 PHP 環境就能檢視版面的本機預覽工具。

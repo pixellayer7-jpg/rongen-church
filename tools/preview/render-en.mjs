@@ -201,10 +201,12 @@ function layout({ title, body, url = '/en/' }) {
 .lang-switch a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .lang-switch__current{opacity:.85;font-weight:600}
 .footer-portfolio-note{opacity:.7;font-size:.85rem;margin-top:.35rem}
+.print-hint{margin:0;padding:.55rem 1rem;background:#f2ece1;border-bottom:1px solid rgba(18,22,29,.12);font-size:.88rem;text-align:center;color:#59616b}
 </style>
 </head>
 <body class="${url === '/en/' ? 'is-front ' : ''}no-sidebar">
 ${header(url)}
+<p class="print-hint no-print">Print for review: press <kbd>Ctrl</kbd>+<kbd>P</kbd> (Mac: ⌘P). Menus, maps, and videos are omitted; contact details remain.</p>
 ${body}
 ${footer()}`;
 }
