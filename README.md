@@ -6,7 +6,8 @@
 > **GitHub:** [pixellayer7-jpg/rongen-church](https://github.com/pixellayer7-jpg/rongen-church)  
 > **Live preview:** [中文](https://pixellayer7-jpg.github.io/rongen-church/) · [English](https://pixellayer7-jpg.github.io/rongen-church/en/)  
 > **Local:** `npm run preview` → <http://localhost:4321/> · <http://localhost:4321/en/>（页首 中 / EN）  
-> **Print:** 預覽頁支援列印審閱（Ctrl/⌘+P）— 隱藏選單／地圖／影片，保留教會名稱與聯絡資訊。
+> **Print:** 預覽頁支援列印審閱（Ctrl/⌘+P）— 隱藏選單／地圖／影片，保留教會名稱與聯絡資訊。  
+> **Share:** [og-image.png](https://pixellayer7-jpg.github.io/rongen-church/og-image.png)（1200×630）供 LinkedIn / 社群預覽。
 
 為台南白河「中華福音道路德會 榮恩堂」製作的自訂 WordPress 佈景主題，
 以及一套不需要 PHP 環境就能檢視版面的本機預覽工具。
@@ -35,7 +36,9 @@
 - **Local preview:** `npm run preview` → [http://localhost:4321](http://localhost:4321) · [http://localhost:4321/en/](http://localhost:4321/en/)
 - **Export:** `npm run export` builds a static zip (includes `/en/`) for pastors to review offline
 - **Package:** `npm run build:theme` → `dist/rongen.zip` for WordPress upload
-- **CI:** `npm run check` (i18n smoke + export + link verify) on every push; Pages deploys `dist/preview-site`
+- **Print for review:** Ctrl/⌘+P — print CSS hides menus, maps, and video; keeps brand + contact (shared theme stylesheet)
+- **Social share:** [og-image.png](https://pixellayer7-jpg.github.io/rongen-church/og-image.png) (1200×630) + `og:` / Twitter large-image meta on zh and en preview pages
+- **CI:** `npm run check` (og rasterize + i18n smoke + export + link verify) on every push; Pages deploys `dist/preview-site`
 
 Production copy for the parish remains Traditional Chinese; the English routes are a bilingual portfolio demo with a 中 / EN header switcher.
 

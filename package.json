@@ -1,6 +1,6 @@
 {
 	"name": "rongen-lutheran-church-site",
-	"version": "1.2.3",
+	"version": "1.2.4",
 	"private": true,
 	"description": "Rongen Lutheran Church - WordPress theme + bilingual (zh/en) local preview tools",
 	"type": "module",
