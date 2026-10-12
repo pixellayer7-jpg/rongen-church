@@ -39,6 +39,7 @@
 - **Print for review:** Ctrl/⌘+P — print CSS hides menus, maps, and video; keeps brand + contact (shared theme stylesheet)
 - **Social share:** [og-image.png](https://pixellayer7-jpg.github.io/rongen-church/og-image.png) (1200×630) + `og:` / Twitter large-image meta on zh and en preview pages
 - **CI:** `npm run check` (og rasterize + i18n smoke + export + link verify) on every push; Pages deploys `dist/preview-site`
+- **Runtime:** Node 22 (`.nvmrc`, `engines`, CI and Pages), same as the other PixelLayer repos
 
 Production copy for the parish remains Traditional Chinese; the English routes are a bilingual portfolio demo with a 中 / EN header switcher.
 
